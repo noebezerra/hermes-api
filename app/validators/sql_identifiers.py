@@ -20,8 +20,9 @@ def validate_view_name(view_name: str) -> str:
 
 
 # Validação de filiais: deve ser uma string de números inteiros separados por vírgula, sem espaços
-def validate_filiais(filial: str) -> str:
+# Retorna um lista de strings para uso na query
+def validate_filiais(filial: str) -> list[str]:
     filial = filial.strip()
     if not re.fullmatch(r"^\d+(,\d+)*$", filial):
         raise HTTPException(400, "Parâmetro 'filial' inválido. Deve conter apenas números inteiros separados por vírgula, sem espaços. Exemplo: 1,2,3")
-    return filial
+    return [f"'{f.strip()}'" for f in filial.split(",")]
