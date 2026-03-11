@@ -8,7 +8,19 @@
 
 # Sobre
 
-API para uso no Grafana, com conexão com Oracle
+API para uso no Grafana, com conexão com mutiplos bancos de dados. Esta API tem por objetivo ser uma alternativa sem muitas manutenções.
+
+O Grafana gratuito em sua versão 9 não tem conexão direta com o banco de dados Oracle. O Hermes API desempenha o papel de uma ponte, sendo responsável pela conexão.
+
+## Caso de uso
+
+Para uma menor manutenção e simplecidade de uso visando à equipe, pode-se criar endpoints dinâmicos que irão consultar um banco de dados e uma tabela ou view. Por exemplo:
+
+`/grafana/db/oracle/SCHEMA.MINHAVIEW`: O endpoint estará preparado para se conectar em uma engine específica e fazer a consulta na tabela que foi passada `SHEMA.MINHAVIEW`. 
+
+Sua manutenção será mais adaptativa aos critérios de filtros ou padronizar condições para as requisições.
+
+Grafana  -->  API ---> Banco de Dados
 
 ## Instalação
 

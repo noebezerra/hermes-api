@@ -1,6 +1,7 @@
 from functools import lru_cache
 from app.core.config import get_settings
 from app.db.adapters.oracle import create_oracle_engine
+from app.db.adapters.mysql import create_mysql_engine
 
 def build_engines():
     settings = get_settings()
@@ -9,6 +10,8 @@ def build_engines():
     for name, db in settings.dbs.items():
         if db.engine == "oracle":
             engines[name] = create_oracle_engine(db)
+        elif db.engine == "mysql":
+            engines[name] = create_mysql_engine(db)
     
     return engines
 
