@@ -64,7 +64,7 @@ def query(
 
 # Endpoint para consultar tabela do MySQL (e-Portal)
 @router.get('/db/mysql/{view_name}')
-@cached(cache=TTLCache(maxsize=100, ttl=300))
+@cached(cache=TTLCache(maxsize=100, ttl=1800))
 def query_mysql(
     view_name: str, 
     limit: int = Query(1000, gt=0, le=10000),
